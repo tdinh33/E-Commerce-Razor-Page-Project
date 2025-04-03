@@ -1,0 +1,81 @@
+@page
+@model E_Commerce_Razor_Page_Project.Pages.Checkout.IndexModel
+
+<div class="container mt-4">
+    <h1>Checkout</h1>
+
+    @if (!Model.CartItems.Any())
+    {
+        <div class="alert alert-warning">
+            Your cart is empty. <a href="/Products">Continue shopping</a>
+        </div>
+        return;
+    }
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Shipping Information</h5>
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="CustomerInfo.Name" class="form-label">Full Name</label>
+                            <input asp-for="CustomerInfo.Name" class="form-control" required>
+                            <span asp-validation-for="CustomerInfo.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CustomerInfo.Email" class="form-label">Email</label>
+                            <input asp-for="CustomerInfo.Email" type="email" class="form-control" required>
+                            <span asp-validation-for="CustomerInfo.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CustomerInfo.Phone" class="form-label">Phone</label>
+                            <input asp-for="CustomerInfo.Phone" class="form-control" required>
+                            <span asp-validation-for="CustomerInfo.Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CustomerInfo.Address" class="form-label">Shipping Address</label>
+                            <textarea asp-for="CustomerInfo.Address" class="form-control" rows="3" required></textarea>
+                            <span asp-validation-for="CustomerInfo.Address" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Order Summary</h5>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                @foreach (var item in Model.CartItems)
+                                {
+                                    <tr>
+                                        <td>@item.ProductName</td>
+                                        <td>x@item.Quantity</td>
+                                        <td class="text-end">$@item.TotalPrice.ToString("F2")</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td colspan="2"><strong>Total</strong></td>
+                                    <td class="text-end"><strong>$@Model.CartTotal.ToString("F2")</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("ValidationScriptsPartial");}
+}

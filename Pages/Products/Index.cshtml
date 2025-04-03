@@ -1,0 +1,37 @@
+@page
+@model E_Commerce_Razor_Page_Project.Pages.Products.IndexModel
+
+<div class="container mt-4">
+    <h1>Our Products</h1>
+
+    <form method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="searchTerm" class="form-control" placeholder="Search products..." value="@Model.SearchTerm">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p class="card-text"><strong>Price: $@product.Price.ToString("F2")</strong></p>
+                        <p class="card-text"><small class="text-muted">Stock: @product.StockQuantity</small></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="/Products/Details/@product.Id" class="btn btn-info">View Details</a>
+                            <form method="post" asp-page-handler="AddToCart">
+                                <input type="hidden" name="productId" value="@product.Id" />
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

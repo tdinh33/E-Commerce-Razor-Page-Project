@@ -1,0 +1,39 @@
+@page "{id:int}"
+@model E_Commerce_Razor_Page_Project.Pages.Products.DetailsModel
+
+<div class="container mt-4">
+    @if (Model.Product != null)
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Model.Product.ImageUrl" class="img-fluid rounded" alt="@Model.Product.Name">
+            </div>
+            <div class="col-md-6">
+                <h1>@Model.Product.Name</h1>
+                <p class="lead">@Model.Product.Description</p>
+                <p class="h3 text-primary mb-4">$@Model.Product.Price.ToString("F2")</p>
+                <p>
+                    <strong>Category:</strong> @Model.Product.Category<br>
+                    <strong>Stock:</strong> @Model.Product.StockQuantity items available
+                </p>
+
+                <form method="post" class="mb-4">
+                    <input type="hidden" asp-for="Product.Id" />
+                    <div class="input-group mb-3">
+                        <input type="number" name="quantity" class="form-control" value="1" min="1" max="@Model.Product.StockQuantity">
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </form>
+
+                <a href="/Products" class="btn btn-outline-secondary">Back to Products</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            Product not found.
+            <a href="/Products" class="btn btn-outline-primary ml-3">Return to Products</a>
+        </div>
+    }
+</div>
