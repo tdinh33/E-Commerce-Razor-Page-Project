@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "eQ91OpaTAiY=",
+  "success": true,
+  "projectFilePath": "/Users/tin_1_2/Desktop/ECommerceRazorPage/ECommerceRazorPage/ECommerceRazorPage.csproj",
+  "expectedPackageFiles": [
+    "/Users/tin_1_2/.nuget/packages/microsoft.windowsdesktop.app.ref/8.0.10/microsoft.windowsdesktop.app.ref.8.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}
