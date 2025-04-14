@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ECommerceRazorPage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a06c4cf5ccae51ee5a0143b99e51fa68731c68ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("ECommerceRazorPage")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ECommerceRazorPage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
